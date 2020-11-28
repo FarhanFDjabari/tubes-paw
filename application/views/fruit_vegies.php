@@ -23,10 +23,10 @@
         </a>
     </div>
 
-    <h2 class="card-title mb-1 mt-5">Produk untuk Anda</h2>
+    <h2 class="card-title mb-1 mt-5">Kategori: Fruit & Vegies</h2>
 
     <div class="row text-center mt-2">
-        <?php foreach ($barang as $brg) : ?>
+        <?php foreach ($fruit_vegies as $brg) : ?>
             <div class="card ml-3 mb-3" style="width: 16rem;">
                 <img src="<?= base_url() . '/uploads//' . $brg->gambar ?>" class="card-img-top" alt="...">
                 <div class="card-body">

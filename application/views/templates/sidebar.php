@@ -7,7 +7,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('dashboard/index') ?>">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-store"></i>
                 </div>
@@ -19,7 +19,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="<?= base_url('dashboard/index') ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -34,28 +34,28 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="<?= base_url('kategori/snacks') ?>">
                     <i class="fas fa-fw fa-cookie"></i>
                     <span>Snacks</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="<?= base_url('kategori/fruit_vegies') ?>">
                     <i class="fas fa-fw fa-carrot"></i>
                     <span>Fruit & Vegies</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="<?= base_url('kategori/meat') ?>">
                     <i class="fas fa-fw fa-drumstick-bite"></i>
                     <span>Meat</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="<?= base_url('kategori/home_tools') ?>">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Home Tools</span></a>
             </li>
@@ -119,6 +119,15 @@
                                 </form>
                             </div>
                         </li>
+
+                        <div class="navbar">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <?php $keranjang = 'Keranjang Belanja: ' . $this->cart->total_items() ?>
+                                    <?= anchor('dashboard/detail_keranjang', $keranjang) ?>
+                                </li>
+                            </ul>
+                        </div>
 
 
                         <div class="topbar-divider d-none d-sm-block"></div>

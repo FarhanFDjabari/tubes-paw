@@ -72,7 +72,12 @@
 
                     <div class="form-group">
                         <label for="">Kategori</label>
-                        <input type="text" name="kategori" class="form-control">
+                        <select class="form-control" name="kategori" id="">
+                            <option value="Snacks">Snacks</option>
+                            <option value="Fruit & Vegies">Fruit & Vegies</option>
+                            <option value="Meat">Meat</option>
+                            <option value="Home Tools">Home Tools</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
