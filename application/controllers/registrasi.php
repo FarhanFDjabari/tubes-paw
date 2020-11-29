@@ -28,7 +28,7 @@ class Registrasi extends CI_Controller
                 'nama' => $this->input->post('nama'),
                 'username' => $this->input->post('username'),
                 'password' => $this->input->post('password_1'),
-                'role_id' => 2,
+                'role_id' => $this->input->post('role_id'),
             ];
 
             $this->db->insert('tb_user', $data);

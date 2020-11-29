@@ -13,6 +13,13 @@
                             </div>
                             <form method="post" action="<?= base_url('registrasi/index'); ?>" class="user">
                                 <div class="form-group">
+                                    <label for="">Tipe Pengguna</label>
+                                    <select class="form-control" name="role_id" id="">
+                                        <option value=1>Penjual</option>
+                                        <option value=2>Pembeli</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <input type="text" name="nama" class="form-control form-control-user" id="exampleInputName" placeholder="Nama Lengkap">
                                     <?= form_error('nama', '<div class="text-danger small ml-2">', '</div>') ?>
                                 </div>
