@@ -4,7 +4,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin/dashboard_admin') ?>">
@@ -41,11 +41,6 @@
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
         </ul>
         <!-- End of Sidebar -->
 
@@ -68,7 +63,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-dark" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>

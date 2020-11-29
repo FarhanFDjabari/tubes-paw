@@ -1,4 +1,4 @@
-<body class="bg-gradient-primary">
+<body class="bg-gradient-info">
 
     <div class="container">
 
@@ -34,7 +34,7 @@
                                                 <label class="custom-control-label" for="customCheck">Remember Me</label>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-block btn-user">
+                                        <button type="submit" class="btn btn-info btn-block btn-user">
                                             Login
                                         </button>
                                     </form>

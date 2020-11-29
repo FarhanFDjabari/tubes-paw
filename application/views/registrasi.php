@@ -1,4 +1,4 @@
-<body class="bg-gradient-primary">
+<body class="bg-gradient-dark">
 
     <div class="container">
 
@@ -29,7 +29,7 @@
                                         <input type="password" name="password_2" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Ulangi Password">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-user btn-block">Daftar</button>
+                                <button type="submit" class="btn btn-dark btn-user btn-block">Daftar</button>
                             </form>
                             <hr>
                             <div class="text-center">

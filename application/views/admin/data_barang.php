@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambahProduk">
+    <button class="btn btn-sm btn-dark mb-3" data-toggle="modal" data-target="#tambahProduk">
         <i class="fas fa-plus fa-sm"></i> Tambah Produk
     </button>
     <table class="table table-bordered">
