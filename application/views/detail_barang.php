@@ -43,7 +43,7 @@
 
                         </table>
                         <?= anchor('dashboard/tambah_ke_keranjang/' . $brg->id_barang, '<div class="btn btn-sm btn-primary">Tambah ke Keranjang</div>') ?>
-                        <?= anchor('dashboard/index/', '<div class="btn btn-sm btn-secondary">Kembali</div>') ?>
+                        <?= anchor('welcome/index/', '<div class="btn btn-sm btn-secondary">Kembali</div>') ?>
                     </div>
                 </div>
             <?php endforeach; ?>

@@ -2,13 +2,22 @@
 
 class Dashboard extends CI_Controller
 {
-    public function index()
+    public function __construct()
     {
-        $data['barang'] = $this->model_barang->tampil_data()->result();
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
-        $this->load->view('dashboard', $data);
-        $this->load->view('templates/footer');
+        parent::__construct();
+
+        if ($this->session->userdata('role_id') != '2') {
+            $this->session->set_flashdata(
+                'pesan',
+                '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Anda <strong>Belum Login</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>'
+            );
+            redirect('auth/login');
+        }
     }
 
     public function tambah_ke_keranjang($id)
@@ -23,12 +32,13 @@ class Dashboard extends CI_Controller
         ];
 
         $this->cart->insert($data);
-        redirect('dashboard');
+        redirect('welcome');
     }
 
     public function detail_keranjang()
     {
-        $this->load->view('templates/header');
+        $title['title'] = 'Keranjang Belanja';
+        $this->load->view('templates/header', $title);
         $this->load->view('templates/sidebar');
         $this->load->view('keranjang');
         $this->load->view('templates/footer');
@@ -37,12 +47,13 @@ class Dashboard extends CI_Controller
     public function hapus_keranjang()
     {
         $this->cart->destroy();
-        redirect('dashboard/index');
+        redirect('welcome/index');
     }
 
     public function pembayaran()
     {
-        $this->load->view('templates/header');
+        $title['title'] = 'Pembayaran';
+        $this->load->view('templates/header', $title);
         $this->load->view('templates/sidebar');
         $this->load->view('pembayaran');
         $this->load->view('templates/footer');
@@ -51,9 +62,10 @@ class Dashboard extends CI_Controller
     public function proses_pesanan()
     {
         $is_processed = $this->model_invoice->index();
+        $title['title'] = 'Proses Pesanan';
         if ($is_processed) {
             $this->cart->destroy();
-            $this->load->view('templates/header');
+            $this->load->view('templates/header', $title);
             $this->load->view('templates/sidebar');
             $this->load->view('proses_pesanan');
             $this->load->view('templates/footer');
@@ -65,7 +77,8 @@ class Dashboard extends CI_Controller
     public function detail($id_barang)
     {
         $data['barang'] = $this->model_barang->detail_barang($id_barang);
-        $this->load->view('templates/header');
+        $title['title'] = 'Detail Produk';
+        $this->load->view('templates/header', $title);
         $this->load->view('templates/sidebar');
         $this->load->view('detail_barang', $data);
         $this->load->view('templates/footer');
