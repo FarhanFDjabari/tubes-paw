@@ -8,6 +8,7 @@ Aplikasi e-commerce yang dibuat dengan tujuan pemenuhan tugas akademik mata kuli
 
 - [CodeIgniter](https://codeigniter.com/download)
 - [XAMPP](https://www.apachefriends.org/download.html)
+- Database project_akhir.sql
 
 ---
 
