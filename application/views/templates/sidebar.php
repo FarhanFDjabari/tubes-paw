@@ -20,8 +20,14 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="<?= base_url('welcome/index') ?>">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <i class="fas fa-fw fa-shopping-bag"></i>
+                    <span>Shop</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-history"></i>
+                    <span>Riwayat Transaksi</span></a>
             </li>
 
             <!-- Divider -->
@@ -73,7 +79,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-dark bg-info topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -85,7 +91,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-info" type="button">
+                                <button class="btn btn-light" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -119,7 +125,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <a href="<?= base_url('dashboard/detail_keranjang') ?>" class="btn btn-info">
                                     <i class="fa fa-shopping-cart"></i>
-                                    <span class="badge badge-light"><?= $this->cart->total_items() ?></span>
+                                    <span class="badge badge-dark"><?= $this->cart->total_items() ?></span>
                                 </a>
                             </ul>
 
@@ -131,7 +137,7 @@
 
                                     <li class="nav-item dropdown no-arrow">
                                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->userdata('nama') ?></span>
+                                            <span class="mr-2 d-none d-lg-inline text-white-600 small"><strong><?= $this->session->userdata('nama') ?></strong></span>
                                             <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                                         </a>
                                         <!-- Dropdown - User Information -->
