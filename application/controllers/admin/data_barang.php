@@ -62,6 +62,7 @@ class Data_barang extends CI_Controller
         ];
 
         $this->model_barang->tambah_barang($data, 'tb_barang');
+        $this->session->set_flashdata('isSuccess', 'add');
         redirect('admin/data_barang/index');
     }
 
@@ -100,6 +101,7 @@ class Data_barang extends CI_Controller
         ];
 
         $this->model_barang->update_data($where, $data, 'tb_barang');
+        $this->session->set_flashdata('isSuccess', 'edit');
         redirect('admin/data_barang/index');
     }
 
@@ -109,6 +111,7 @@ class Data_barang extends CI_Controller
             'id_barang' => $id
         ];
         $this->model_barang->hapus_data($where, 'tb_barang');
+        $this->session->set_flashdata('isSuccess', 'delete');
         redirect('admin/data_barang/index');
     }
 }

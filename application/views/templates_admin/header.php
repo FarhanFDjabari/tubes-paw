@@ -19,4 +19,6 @@
     <link href="<?= base_url() ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/admin-view-style.css" rel="stylesheet">
 
+    <!-- Swal Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>

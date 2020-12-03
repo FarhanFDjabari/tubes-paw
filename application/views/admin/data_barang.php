@@ -1,3 +1,4 @@
+<?php $this->load->view('admin/Modals/swalFire') ?>
 <div class="container-fluid">
     <button class="btn btn-sm btn-dark mb-3" data-toggle="modal" data-target="#tambahProduk">
         <i class="fas fa-plus fa-sm"></i> Tambah Produk
@@ -30,18 +31,28 @@
                     </div>
                 </td>
                 <td>
-                    <?= anchor(
-                        'admin/data_barang/edit/' . $brg->id_barang,
-                        '<div class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></div>'
-                    ) ?>
-
+                    <div class="btn btn-primary" data-toggle="modal" data-target="#editModal<?= $no ?>"><i class="fas fa-edit"></i></div>
+                    <?php $this->load->view('admin/Modals/onEditModal', [
+                        'no' => $no,
+                        'id_barang' => $brg->id_barang,
+                        'nama_barang' => $brg->nama_barang,
+                        'keterangan' => $brg->keterangan,
+                        'kategori' => $brg->kategori,
+                        'harga' => $brg->harga,
+                        'stok' => $brg->stok,
+                    ]) ?>
                 </td>
                 <td>
-                    <?= anchor(
-                        'admin/data_barang/hapus/' .
-                            $brg->id_barang,
-                        ' <div class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></div>'
-                    ) ?>
+                    <div class="btn btn-danger" data-toggle="modal" data-target="#deleteModal<?= $no ?>"><i class="fas fa-trash"></i></div>
+                    <?php $this->load->view('admin/Modals/onDeleteConfirm', [
+                        'no' => $no,
+                        'id_barang' => $brg->id_barang,
+                        'nama_barang' => $brg->nama_barang,
+                        'keterangan' => $brg->keterangan,
+                        'kategori' => $brg->kategori,
+                        'harga' => $brg->harga,
+                        'stok' => $brg->stok,
+                    ]) ?>
                 </td>
             </tr>
         <?php endforeach; ?>
