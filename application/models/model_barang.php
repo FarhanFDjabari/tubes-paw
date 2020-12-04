@@ -29,12 +29,12 @@ class Model_barang extends CI_Model
     public function hapus_data($where, $table)
     {
         $this->db->select('gambar');
-        $this->db->from($table);
+        $this->db->from($this->tablename);
         $this->db->where($where);
         $gambar = $this->db->get()->row()->gambar;
         unlink("./uploads/" . $gambar);
         $this->db->or_where(['gambar' => $gambar]);
-        $this->db->delete($table);
+        $this->db->delete($this->tablename);
     }
 
     public function find($id)

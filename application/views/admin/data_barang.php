@@ -32,7 +32,7 @@
                 </td>
                 <td>
                     <div class="btn btn-primary" data-toggle="modal" data-target="#editModal<?= $no ?>"><i class="fas fa-edit"></i></div>
-                    <?php $this->load->view('admin/Modals/onEditModal', [
+                    <?php $this->load->view('admin/Modals/data_barang/onEditModal', [
                         'no' => $no,
                         'id_barang' => $brg->id_barang,
                         'nama_barang' => $brg->nama_barang,
@@ -44,7 +44,7 @@
                 </td>
                 <td>
                     <div class="btn btn-danger" data-toggle="modal" data-target="#deleteModal<?= $no ?>"><i class="fas fa-trash"></i></div>
-                    <?php $this->load->view('admin/Modals/onDeleteConfirm', [
+                    <?php $this->load->view('admin/Modals/data_barang/onDeleteConfirm', [
                         'no' => $no,
                         'id_barang' => $brg->id_barang,
                         'nama_barang' => $brg->nama_barang,
