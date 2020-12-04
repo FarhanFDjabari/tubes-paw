@@ -24,6 +24,13 @@
                     <span>Dashboard</span></a>
             </li>
 
+            <!-- Data User -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('admin/data_user') ?>">
+                    <i class="fas fa-fw fa-file-invoice"></i>
+                    <span>Data User</span></a>
+            </li>
+
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('admin/data_barang') ?>">

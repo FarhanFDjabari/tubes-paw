@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2020 at 05:48 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Waktu pembuatan: 04 Des 2020 pada 14.42
+-- Versi server: 10.4.14-MariaDB
+-- Versi PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,11 +24,12 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_barang`
+-- Struktur dari tabel `tb_barang`
 --
 
 CREATE TABLE `tb_barang` (
   `id_barang` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `nama_barang` varchar(120) NOT NULL,
   `keterangan` varchar(225) NOT NULL,
   `kategori` varchar(60) NOT NULL,
@@ -38,19 +39,18 @@ CREATE TABLE `tb_barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_barang`
+-- Dumping data untuk tabel `tb_barang`
 --
 
-INSERT INTO `tb_barang` (`id_barang`, `nama_barang`, `keterangan`, `kategori`, `harga`, `stok`, `gambar`) VALUES
-(1, 'Apel Malang', 'Buah Apel Malang Segar', 'Fruit & Vegies', 30000, 10, 'apelmalang.jpg'),
-(2, 'Daging Sapi', 'Daging Sapi segar', 'Meat', 28000, 5, 'dagingsapi.jpg'),
-(6, 'Popcorn Caramel', 'Popcorn dengan rasa karamel | Berat bersih 150g', 'Snacks', 15000, 7, 'Caramel-Popcorn.jpg'),
-(7, 'Sapu Ijuk', 'Sapu ijuk berkualitas', 'Home Tools', 25000, 15, 'sapu-ijuk.jpg');
+INSERT INTO `tb_barang` (`id_barang`, `user_id`, `nama_barang`, `keterangan`, `kategori`, `harga`, `stok`, `gambar`) VALUES
+(2, 0, 'Daging Sapi', 'Daging Sapi segar', 'Meat', 28000, 5, 'dagingsapi.jpg'),
+(6, 0, 'Popcorn Caramel', 'Popcorn dengan rasa karamel | Berat bersih 150g', 'Snacks', 15000, 7, 'Caramel-Popcorn.jpg'),
+(7, 0, 'Sapu Ijuk', 'Sapu ijuk berkualitas', 'Home Tools', 25000, 15, 'sapu-ijuk.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_invoice`
+-- Struktur dari tabel `tb_invoice`
 --
 
 CREATE TABLE `tb_invoice` (
@@ -62,7 +62,7 @@ CREATE TABLE `tb_invoice` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_invoice`
+-- Dumping data untuk tabel `tb_invoice`
 --
 
 INSERT INTO `tb_invoice` (`id`, `nama`, `alamat`, `tgl_pesan`, `batas_bayar`) VALUES
@@ -73,7 +73,7 @@ INSERT INTO `tb_invoice` (`id`, `nama`, `alamat`, `tgl_pesan`, `batas_bayar`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_pesanan`
+-- Struktur dari tabel `tb_pesanan`
 --
 
 CREATE TABLE `tb_pesanan` (
@@ -87,7 +87,7 @@ CREATE TABLE `tb_pesanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_pesanan`
+-- Dumping data untuk tabel `tb_pesanan`
 --
 
 INSERT INTO `tb_pesanan` (`id`, `id_invoice`, `id_barang`, `nama_barang`, `jumlah`, `harga`, `pilihan`) VALUES
@@ -100,7 +100,7 @@ INSERT INTO `tb_pesanan` (`id`, `id_invoice`, `id_barang`, `nama_barang`, `jumla
 (7, 3, 6, 'Popcorn Caramel', 3, 15000, '');
 
 --
--- Triggers `tb_pesanan`
+-- Trigger `tb_pesanan`
 --
 DELIMITER $$
 CREATE TRIGGER `pesanan_penjualan` AFTER INSERT ON `tb_pesanan` FOR EACH ROW BEGIN
@@ -113,7 +113,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_user`
+-- Struktur dari tabel `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -125,69 +125,70 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_user`
+-- Dumping data untuk tabel `tb_user`
 --
 
 INSERT INTO `tb_user` (`id`, `nama`, `username`, `password`, `role_id`) VALUES
 (1, 'admin', 'admin', '123', 1),
 (2, 'Farhan', 'farhan', '123', 2),
-(3, 'Andre', 'andre', 'andre', 2);
+(3, 'Andre', 'andre', 'andre', 2),
+(7, 'Ramdani Kurnia', 'Kurnia', '$2y$10$S91n7MzpOmNoCVOrGTJBfeK2ByQ.qGlKf5GerzSZxxs', 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tb_barang`
+-- Indeks untuk tabel `tb_barang`
 --
 ALTER TABLE `tb_barang`
   ADD PRIMARY KEY (`id_barang`);
 
 --
--- Indexes for table `tb_invoice`
+-- Indeks untuk tabel `tb_invoice`
 --
 ALTER TABLE `tb_invoice`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_pesanan`
+-- Indeks untuk tabel `tb_pesanan`
 --
 ALTER TABLE `tb_pesanan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_user`
+-- Indeks untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tb_barang`
+-- AUTO_INCREMENT untuk tabel `tb_barang`
 --
 ALTER TABLE `tb_barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `tb_invoice`
+-- AUTO_INCREMENT untuk tabel `tb_invoice`
 --
 ALTER TABLE `tb_invoice`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tb_pesanan`
+-- AUTO_INCREMENT untuk tabel `tb_pesanan`
 --
 ALTER TABLE `tb_pesanan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tb_user`
+-- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
