@@ -15,6 +15,15 @@
 <script src="<?= base_url() ?>assets/js/demo/chart-area-demo.js"></script>
 <script src="<?= base_url() ?>assets/js/demo/chart-pie-demo.js"></script>
 
+<!-- Data table CDN -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tableData').DataTable();
+    });
+</script>
+
 </body>
 
 </html>

@@ -3,59 +3,64 @@
     <button class="btn btn-sm btn-dark mb-3" data-toggle="modal" data-target="#tambahProduk">
         <i class="fas fa-plus fa-sm"></i> Tambah Produk
     </button>
-    <table class="table table-bordered">
-        <tr>
-            <th>No</th>
-            <th>Foto Produk</th>
-            <th>Nama Produk</th>
-            <th>Keterangan</th>
-            <th>Kategori</th>
-            <th>Harga</th>
-            <th>Stok</th>
-            <th colspan="3">Aksi</th>
-        </tr>
-
-        <?php $no = 1;
-        foreach ($barang as $brg) : ?>
+    <table class="table table-bordered" id="tableData">
+        <thead>
             <tr>
-                <td><?= $no++ ?></td>
-                <td><img src="<?= base_url() . '/uploads//' . $brg->gambar ?>" style="width: 8rem;" alt="..."></td>
-                <td><?= $brg->nama_barang ?></td>
-                <td><?= $brg->keterangan ?></td>
-                <td><?= $brg->kategori ?></td>
-                <td><?= $brg->harga ?></td>
-                <td><?= $brg->stok ?></td>
-                <td>
-                    <div class="btn btn-success btn-sm">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </td>
-                <td>
-                    <div class="btn btn-primary" data-toggle="modal" data-target="#editModal<?= $no ?>"><i class="fas fa-edit"></i></div>
-                    <?php $this->load->view('admin/Modals/data_barang/onEditModal', [
-                        'no' => $no,
-                        'id_barang' => $brg->id_barang,
-                        'nama_barang' => $brg->nama_barang,
-                        'keterangan' => $brg->keterangan,
-                        'kategori' => $brg->kategori,
-                        'harga' => $brg->harga,
-                        'stok' => $brg->stok,
-                    ]) ?>
-                </td>
-                <td>
-                    <div class="btn btn-danger" data-toggle="modal" data-target="#deleteModal<?= $no ?>"><i class="fas fa-trash"></i></div>
-                    <?php $this->load->view('admin/Modals/data_barang/onDeleteConfirm', [
-                        'no' => $no,
-                        'id_barang' => $brg->id_barang,
-                        'nama_barang' => $brg->nama_barang,
-                        'keterangan' => $brg->keterangan,
-                        'kategori' => $brg->kategori,
-                        'harga' => $brg->harga,
-                        'stok' => $brg->stok,
-                    ]) ?>
-                </td>
+                <th scope="col">No</th>
+                <th scope="col">Foto Produk</th>
+                <th scope="col">Nama Produk</th>
+                <th scope="col">Keterangan</th>
+                <th scope="col">Kategori</th>
+                <th scope="col">Harga</th>
+                <th scope="col">Stok</th>
+                <th scope="col">Lihat</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
             </tr>
-        <?php endforeach; ?>
+        </thead>
+        <tbody>
+            <?php $no = 1;
+            foreach ($barang as $brg) : ?>
+                <tr>
+                    <th scope="row"><?= $no++ ?></th>
+                    <td><img src="<?= base_url() . '/uploads//' . $brg->gambar ?>" style="width: 8rem;" alt="..."></td>
+                    <td><?= $brg->nama_barang ?></td>
+                    <td><?= $brg->keterangan ?></td>
+                    <td><?= $brg->kategori ?></td>
+                    <td><?= $brg->harga ?></td>
+                    <td><?= $brg->stok ?></td>
+                    <td>
+                        <div class="btn btn-success btn-sm">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="btn btn-primary" data-toggle="modal" data-target="#editModal<?= $no ?>"><i class="fas fa-edit"></i></div>
+                        <?php $this->load->view('admin/Modals/data_barang/onEditModal', [
+                            'no' => $no,
+                            'id_barang' => $brg->id_barang,
+                            'nama_barang' => $brg->nama_barang,
+                            'keterangan' => $brg->keterangan,
+                            'kategori' => $brg->kategori,
+                            'harga' => $brg->harga,
+                            'stok' => $brg->stok,
+                        ]) ?>
+                    </td>
+                    <td>
+                        <div class="btn btn-danger" data-toggle="modal" data-target="#deleteModal<?= $no ?>"><i class="fas fa-trash"></i></div>
+                        <?php $this->load->view('admin/Modals/data_barang/onDeleteConfirm', [
+                            'no' => $no,
+                            'id_barang' => $brg->id_barang,
+                            'nama_barang' => $brg->nama_barang,
+                            'keterangan' => $brg->keterangan,
+                            'kategori' => $brg->kategori,
+                            'harga' => $brg->harga,
+                            'stok' => $brg->stok,
+                        ]) ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
     </table>
 </div>
 

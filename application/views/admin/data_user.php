@@ -3,63 +3,68 @@
     <button class="btn btn-sm btn-dark mb-3" data-toggle="modal" data-target="#tambahProduk">
         <i class="fas fa-plus fa-sm"></i> Tambah User
     </button>
-    <table class="table table-bordered">
-        <tr>
-            <th>No</th>
-            <th>Nama</th>
-            <th>Username</th>
-            <th>Role</th>
-            <th colspan="3">Aksi</th>
-        </tr>
-
-        <?php $no = 1;
-        foreach ($users as $user) : ?>
+    <table class="table table-bordered" id="tableData">
+        <thead>
             <tr>
-                <?php switch ($user->role_id) {
-                    case 1:
-                        $thisRole = "Admon";
-                        break;
-                    case 2:
-                        $thisRole =  'Merchant';
-                        break;
-                    case 3:
-                        $thisRole =  "End User";
-                        break;
-                } ?>
-                <td><?= $no++ ?></td>
-                <td><?= $user->nama ?></td>
-                <td><?= $user->username ?></td>
-                <td><?= $thisRole ?></td>
-                <td>
-                    <div class="btn btn-success btn-sm">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </td>
-                </td>
-                <td>
-                    <div class="btn btn-primary" data-toggle="modal" data-target="#editModal<?= $no ?>"><i class="fas fa-edit"></i></div>
-                    <?php $this->load->view('admin/Modals/data_user/onEditModal', [
-                        'no' => $no,
-                        'id' => $user->id,
-                        'nama' => $user->nama,
-                        'username' => $user->username,
-                        'role' => $thisRole,
-                    ])
-                    ?>
-                </td>
-                <td>
-                    <div class="btn btn-danger" data-toggle="modal" data-target="#deleteModal<?= $no ?>"><i class="fas fa-trash"></i></div>
-                    <?php $this->load->view('admin/Modals/data_user/onDeleteConfirm', [
-                        'no' => $no,
-                        'id' => $user->id,
-                        'nama' => $user->nama,
-                        'username' => $user->username,
-                        'role' => $thisRole,
-                    ])
-                    ?>
-                </td>
+                <th scope="col">No</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Username</th>
+                <th scope="col">Role</th>
+                <th scope="col">Lihat</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
             </tr>
-        <?php endforeach; ?>
+        </thead>
+        <tbody>
+            <?php $no = 1;
+            foreach ($users as $user) : ?>
+                <tr>
+                    <?php switch ($user->role_id) {
+                        case 1:
+                            $thisRole = "Admon";
+                            break;
+                        case 2:
+                            $thisRole =  'Merchant';
+                            break;
+                        case 3:
+                            $thisRole =  "End User";
+                            break;
+                    } ?>
+                    <th scope="row"><?= $no++ ?></th>
+                    <td><?= $user->nama ?></td>
+                    <td><?= $user->username ?></td>
+                    <td><?= $thisRole ?></td>
+                    <td>
+                        <div class="btn btn-success btn-sm">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </td>
+                    </td>
+                    <td>
+                        <div class="btn btn-primary" data-toggle="modal" data-target="#editModal<?= $no ?>"><i class="fas fa-edit"></i></div>
+                        <?php $this->load->view('admin/Modals/data_user/onEditModal', [
+                            'no' => $no,
+                            'id' => $user->id,
+                            'nama' => $user->nama,
+                            'username' => $user->username,
+                            'role' => $thisRole,
+                        ])
+                        ?>
+                    </td>
+                    <td>
+                        <div class="btn btn-danger" data-toggle="modal" data-target="#deleteModal<?= $no ?>"><i class="fas fa-trash"></i></div>
+                        <?php $this->load->view('admin/Modals/data_user/onDeleteConfirm', [
+                            'no' => $no,
+                            'id' => $user->id,
+                            'nama' => $user->nama,
+                            'username' => $user->username,
+                            'role' => $thisRole,
+                        ])
+                        ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
     </table>
 </div>
 
