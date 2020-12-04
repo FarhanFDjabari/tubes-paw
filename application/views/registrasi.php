@@ -15,8 +15,8 @@
                                 <div class="form-group">
                                     <label for="">Tipe Pengguna</label>
                                     <select class="form-control" name="role_id" id="">
-                                        <option value=1>Penjual</option>
-                                        <option value=2>Pembeli</option>
+                                        <option value=2>Penjual</option>
+                                        <option value=3>Pembeli</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
