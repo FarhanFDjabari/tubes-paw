@@ -5,8 +5,8 @@ class Data_user extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        if ($this->session->userdata('role_id') == '3') {
-        } else if ($this->session->userdata('role_id') != '1') {
+        if ($this->session->userdata('role_id') == '1') {
+        } else {
             $this->session->set_flashdata(
                 'pesan',
                 '<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -25,8 +25,9 @@ class Data_user extends CI_Controller
     {
         $allUser = $this->users->getAll();
         $title['title'] = 'Data User';
+        $role['role'] = $this->session->userData('role_id');
         $this->load->view('templates_admin/header', $title);
-        $this->load->view('templates_admin/sidebar');
+        $this->load->view('templates_admin/sidebar', $role);
         $this->load->view('admin/data_user', ['users' => $allUser]);
         $this->load->view('templates_admin/footer');
     }

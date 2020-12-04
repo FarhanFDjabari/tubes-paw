@@ -22,9 +22,9 @@
                             <div class="form-group">
                                 <label for="inputRole">Role</label>
                                 <select class="form-control" name="role_id" id="inputRole">
-                                    <option value="1">Admon</option>
-                                    <option value="2">Merchant</option>
-                                    <option value="3">End User</option>
+                                    <option value="1" <?php if ($role == 'Admon') : ?> selected <?php endif; ?>>Admon</option>
+                                    <option value="2" <?php if ($role == 'Merchant') : ?> selected <?php endif; ?>>Merchant</option>
+                                    <option value="3" <?php if ($role == 'End User') : ?> selected <?php endif; ?>>End User</option>
                                 </select>
                             </div>
                         </div>

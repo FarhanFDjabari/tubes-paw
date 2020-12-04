@@ -41,10 +41,10 @@ class Auth extends CI_Controller
                         redirect('admin/dashboard_admin');
                         break;
                     case 2:
-                        redirect('welcome');
+                        redirect('admin/dashboard_admin');
                         break;
                     case 3:
-                        redirect('admin/dashboard_admin');
+                        redirect('welcome');
                         break;
                     default:
                         break;

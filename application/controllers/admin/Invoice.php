@@ -6,8 +6,8 @@ class Invoice extends CI_Controller
     {
         parent::__construct();
 
-        if ($this->session->userdata('role_id') == '3') {
-        } else if ($this->session->userdata('role_id') != '1') {
+        if ($this->session->userdata('role_id') == '1') {
+        } else if ($this->session->userdata('role_id') != '2') {
             $this->session->set_flashdata(
                 'pesan',
                 '<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -25,8 +25,9 @@ class Invoice extends CI_Controller
     {
         $data['invoice'] = $this->model_invoice->tampil_data();
         $title['title'] = 'Invoice';
+        $role['role'] = $this->session->userData('role_id');
         $this->load->view('templates_admin/header', $title);
-        $this->load->view('templates_admin/sidebar');
+        $this->load->view('templates_admin/sidebar', $role);
         $this->load->view('admin/invoice', $data);
         $this->load->view('templates_admin/footer');
     }
@@ -36,8 +37,9 @@ class Invoice extends CI_Controller
         $data['invoice'] = $this->model_invoice->ambil_id_invoice($id_invoice);
         $data['pesanan'] = $this->model_invoice->ambil_id_pesanan($id_invoice);
         $title['title'] = 'Detail Invoice';
+        $role['role'] = $this->session->userData('role_id');
         $this->load->view('templates_admin/header', $title);
-        $this->load->view('templates_admin/sidebar');
+        $this->load->view('templates_admin/sidebar', $role);
         $this->load->view('admin/detail_invoice', $data);
         $this->load->view('templates_admin/footer');
     }

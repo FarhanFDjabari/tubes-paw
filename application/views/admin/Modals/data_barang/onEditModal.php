@@ -22,7 +22,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="onDeleteConfirmationKategori">Kategori</label>
-                                <input type="text" class="form-control" id="onDeleteConfirmationKategori" aria-describedby="kateogri" name="kategori" value="<?= $kategori ?>">
+                                <select class="form-control" name="kategori" id="onDeleteConfirmationKategori" aria-describedby="kategori">
+                                    <option value="Snacks" <?php if ($kategori == 'Snacks') : ?> selected <?php endif; ?>>Snacks</option>
+                                    <option value="Fruit & Vegies" <?php if ($kategori == 'Fruit & Vegies') : ?> selected <?php endif; ?>>Fruit & Vegies</option>
+                                    <option value="Meat" <?php if ($kategori == 'Meat') : ?> selected <?php endif; ?>>Meat</option>
+                                    <option value="Home Tools" <?php if ($kategori == 'Home Tools') : ?> selected <?php endif; ?>>Home Tools</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="onDeleteConfirmationHarga">Harga</label>
@@ -35,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="hidden" name="id_barang" value="<?= $id_barang?>">
+                <input type="hidden" name="id_barang" value="<?= $id_barang ?>">
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-warning">Update</button>
