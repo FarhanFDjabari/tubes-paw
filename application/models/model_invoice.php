@@ -57,7 +57,7 @@ class Model_invoice extends CI_Model
 
             $this->db->insert('tb_pesanan', $data);
         }
-        return true;
+        return $this->db->get_where('tb_invoice', ['id' => $id_invoice])->row();
     }
 
     public function tampil_data()

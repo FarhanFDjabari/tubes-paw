@@ -32,10 +32,6 @@
             )
     <?php
             break;
-
-        default:
-
-            break;
     }
 
     ?>
