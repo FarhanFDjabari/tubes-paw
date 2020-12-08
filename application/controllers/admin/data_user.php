@@ -57,7 +57,6 @@ class Data_user extends CI_Controller
 
     public function update()
     {
-        // var_dump($this->input->post());
         $id = $this->input->post('id');
         $username = $this->input->post('username');
         $nama = $this->input->post('name');

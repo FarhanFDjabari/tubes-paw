@@ -15,26 +15,26 @@ class Model_barang extends CI_Model
         $this->db->insert($this->tablename, $data);
     }
 
-    public function edit_barang($where, $table)
+    public function edit_barang( $condition, $table)
     {
-        return $this->db->get_where($this->tablename, $where);
+        return $this->db->get_where($this->tablename, $condition);
     }
 
-    public function update_data($where, $data, $table)
+    public function update_data($condition, $data, $table)
     {
-        $this->db->where($where);
+        $this->db->where($condition);
         $this->db->update($this->tablename, $data);
     }
 
-    public function hapus_data($where, $table)
+    public function hapus_data($condition, $table)
     {
-        $this->db->select('gambar');
-        $this->db->from($this->tablename);
-        $this->db->where($where);
-        $gambar = $this->db->get()->row()->gambar;
-        unlink("./uploads/" . $gambar);
-        $this->db->or_where(['gambar' => $gambar]);
-        $this->db->delete($this->tablename);
+        $item = $this->db->where($condition)->from($this->tablename);
+        $fetchedItem = $item->get()->row();
+        $productImage = $fetchedItem->gambar;
+        $qrCode = $fetchedItem->qr_code;
+        unlink("./uploads/$productImage");
+        unlink("./uploads/qrcode/products/$qrCode");
+        $this->db->delete($this->tablename, $condition);
     }
 
     public function find($id)

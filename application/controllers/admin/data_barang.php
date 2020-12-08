@@ -33,24 +33,58 @@ class Data_barang extends CI_Controller
 
     public function tambah_aksi()
     {
+        // Load QR Code Libs
+        $this->load->library('ciqrcode');
+
         $nama_barang = $this->input->post('nama_barang');
         $keterangan = $this->input->post('keterangan');
         $kategori = $this->input->post('kategori');
         $harga = $this->input->post('harga');
         $stok = $this->input->post('stok');
         $gambar = $_FILES['gambar']['name'];
+
+        $imageType = explode('/', $_FILES['gambar']['type'])[1];
+        $imageName = "$nama_barang.$imageType";
+
         if ($gambar = '') {
         } else {
-            $config['upload_path'] = './uploads';
-            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            $config = [
+                'upload_path' => './uploads',
+                'allowed_types' => 'jpg|jpeg|png|gif',
+                'file_name' => "$imageName",
+            ];
 
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('gambar')) {
                 echo "Gambar gagal diupload";
             } else {
-                $gambar = $this->upload->data('file_name');
+                $gambar = $this->upload->data('filename');
             }
         }
+        // Config for QR Code
+        $qrCodeConfig = [
+            'cacheable' => true,
+            'cachedir' => './cache/',
+            'errorlog' => './error-log/',
+            'imagedir' => './uploads/qrcode/products/',
+            'quality' => true,
+            'size' => 1024,
+            'black' => array(224, 255, 255),
+            'white' => array(70, 130, 180)
+        ];
+
+        $this->ciqrcode->initialize($qrCodeConfig);
+
+        $qrCodeName = "$kategori-$nama_barang.png";
+        $params = [
+            'data' => "$kategori--$nama_barang--$keterangan--$harga--$gambar",
+            'level' => 'H',
+            'size' => 10,
+            'savename' => FCPATH . $qrCodeConfig['imagedir'] . $qrCodeName
+        ];
+
+        $this->ciqrcode->generate($params);
+
 
         $data = [
             'nama_barang' => $nama_barang,
@@ -58,10 +92,9 @@ class Data_barang extends CI_Controller
             'kategori' => $kategori,
             'harga' => $harga,
             'stok' => $stok,
-            'gambar' => $gambar
-
+            'gambar' => str_replace(" ", "_", $imageName),
+            'qr_code' => $qrCodeName
         ];
-
         $this->model_barang->tambah_barang($data, 'tb_barang');
         $this->session->set_flashdata('isSuccess', 'add');
         redirect('admin/data_barang/index');

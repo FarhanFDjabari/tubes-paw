@@ -8,6 +8,11 @@ class Model_auth extends CI_Model
         $password = set_value('password');
 
         $result = $this->db->where('username', $username)->where('password', $password)->limit(1)->get('tb_user');
+        $withHassPassword = $this->db->where('username', $username)->limit(1)->get('tb_user')->row();
+        $isVerifiedHash = password_verify($password, $withHassPassword->password);
+        if ($isVerifiedHash) {
+            return $withHassPassword;
+        }
         if ($result->num_rows() > 0) {
             return $result->row();
         } else {
