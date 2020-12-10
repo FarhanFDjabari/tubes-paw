@@ -10,6 +10,8 @@ class Model_invoice extends CI_Model
         date_default_timezone_set('Asia/Jakarta');
         $nama = $this->input->post('nama');
         $alamat = $this->input->post('alamat');
+        $courier = $this->input->post('courier');
+        $payment_method = $this->input->post('payment_method');
 
         $qrCodeConfig = [
             'cacheable' => true,
@@ -40,7 +42,9 @@ class Model_invoice extends CI_Model
             'alamat' => $alamat,
             'tgl_pesan' => date('Y-m-d H:i:s'),
             'batas_bayar' => date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d') + 1, date('Y'))),
-            'qr_code' => $qrCodeName
+            'qr_code' => $qrCodeName,
+            'courier' => $courier,
+            'payment_method' => $payment_method
         ];
 
         $this->db->insert('tb_invoice', $invoice);

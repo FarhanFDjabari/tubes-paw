@@ -34,6 +34,16 @@
             <td align="right">Rp. <?= number_format($total, 0, ',', '.') ?></td>
         </tr>
 
+        <tr>
+            <td colspan="4" align="right">Kurir</td>
+            <td align="right"><?= $invoice->courier ?></td>
+        </tr>
+
+        <tr>
+            <td colspan="4" align="right">Metode Pembayaran</td>
+            <td align="right"><?= $invoice->payment_method ?></td>
+        </tr>
+
     </table>
 
     <a href="<?= base_url('admin/invoice/index') ?>">

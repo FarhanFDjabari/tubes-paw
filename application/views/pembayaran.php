@@ -33,22 +33,22 @@
 
                 <div class="form-group">
                     <label for="">Kurir Pengiriman</label>
-                    <select class="form-control" name="" id="">
-                        <option value="">JNE Reg</option>
-                        <option value="">JNT Reg</option>
-                        <option value="">JNE Yes</option>
-                        <option value="">Sicepat Reg</option>
+                    <select class="form-control" name="courier" id="">
+                        <option value="JNE Reg">JNE Reg</option>
+                        <option value="JNT Reg">JNT Reg</option>
+                        <option value="JNE Yes">JNE Yes</option>
+                        <option value="Sicpeat Reg">Sicepat Reg</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="">Pilih Pembayaran</label>
-                    <select class="form-control" ame="" id="">
-                        <option value="">Bank Mandiri</option>
-                        <option value="">Bank BNI</option>
-                        <option value="">Bank BRI</option>
-                        <option value="">Go-Pay</option>
-                        <option value="">Kartu Kredit</option>
+                    <select class="form-control" name="payment_method" id="">
+                        <option value="Bank Mandiri">Bank Mandiri</option>
+                        <option value="Bank BNI">Bank BNI</option>
+                        <option value="Bank BRI">Bank BRI</option>
+                        <option value="Go-Pay">Go-Pay</option>
+                        <option value="Kartu Kredit">Kartu Kredit</option>
                     </select>
                 </div>
 
